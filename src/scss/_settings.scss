@@ -1,0 +1,31 @@
+// variables
+html {
+    --clr-black: hsla(0, 0%, 11%, 1);
+    --clr-dark-grey: hsla(0, 0%, 15%, 1);
+    --clr-white: rgb(255, 255, 255);
+
+    --clr-green: hsla(88, 63%, 61%, 1);
+    --clr-red: hsla(3, 90%, 63%, 1);
+    --clr-orange: hsla(28, 100%, 66%, 1);
+    --clr-blue: hsla(203, 76%, 67%, 1);
+
+    --clr-green-faded: hsla(88, 63%, 61%, 0.6);
+    --clr-red-faded: hsla(3, 90%, 63%, 0.6);
+    --clr-orange-faded: hsla(28, 100%, 66%, 0.6);
+    --clr-blue-faded: hsla(203, 76%, 67%, 0.6);
+
+    // bar gradient colours
+
+    --clr-bar-1: #a0da5d;
+    --clr-bar-2: #CAC359;
+    --clr-bar-3: #DEB757;
+    --clr-bar-4: #EFAE56;
+    --clr-bar-5: #FAA854;
+    --clr-bar-6: #FFA553;
+    --clr-bar-7: #FE9D53;
+    --clr-bar-8: #FD9051;
+    --clr-bar-9: #FB8350;
+    --clr-bar-10: #F9744E;
+    --clr-bar-11: #F8674D;
+    --clr-bar-12: #F65A4B;
+}

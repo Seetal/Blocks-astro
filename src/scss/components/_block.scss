@@ -1,0 +1,48 @@
+// Add perspective to block and rotate: x 90deg to inner
+
+.block {
+    display: block;
+    position: relative;
+    padding: 8px;
+    &.moved {
+        padding: 0; 
+    }
+    &__inner {
+        display: block;
+        width: 100%;
+        height: 100%;
+        transition: background-color .2s ease;
+        &.faded {
+            opacity: 30%;
+            transition: opacity .2s ease;
+        }
+    }
+}
+[data-colour="red"] {
+    background-color: var(--clr-red);
+    &.selected {
+        background-color: var(--clr-red-faded);
+        border: 3px solid var(--clr-red);
+    }
+}
+[data-colour="green"] {
+    background-color: var(--clr-green);
+    &.selected {
+        background-color: var(--clr-green-faded);
+        border: 3px solid var(--clr-green);
+    }
+}
+[data-colour="blue"] {
+    background-color: var(--clr-blue);
+    &.selected {
+        background-color: var(--clr-blue-faded);
+        border: 3px solid var(--clr-blue);
+    }
+}
+[data-colour="orange"] {
+    background-color: var(--clr-orange);
+    &.selected {
+        background-color: var(--clr-orange-faded);
+        border: 3px solid var(--clr-orange);
+    }
+}

@@ -1,0 +1,1 @@
+export type ConfigColoursModel = string[];

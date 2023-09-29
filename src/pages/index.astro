@@ -1,0 +1,53 @@
+---
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@200;400&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="src/scss/main.scss">
+	</head>
+	<body>
+		<section data-home-view>
+			<h1 class="title">BlockJham</h1>
+			<nav>
+				<ul class="nav">
+					<li><button class="nav__btn blue" data-start>New Game</button></li>
+					<li><button class="nav__btn orange">Tutorial</button></li>
+					<li><button class="nav__btn red">Leaderboard</button></li>
+					<li><button class="nav__btn green">Settings</button></li>
+				</ul>
+			</nav>
+		</section>
+		<section class="hide" data-game-view>
+			<!-- TODO: ADD ALL TIME BLOCKS AT ONCE AND USE OPACITY -->
+			<div class="assists" data-assists></div>
+			<p class="score" data-score>0</p>
+			<div class="timer">
+				<div class="timer__bar b1" data-bar></div>
+				<div class="timer__bar b2" data-bar></div>
+				<div class="timer__bar b3" data-bar></div>
+				<div class="timer__bar b4" data-bar></div>
+				<div class="timer__bar b5" data-bar></div>
+				<div class="timer__bar b6" data-bar></div>
+				<div class="timer__bar b7" data-bar></div>
+				<div class="timer__bar b8" data-bar></div>
+				<div class="timer__bar b9" data-bar></div>
+				<div class="timer__bar b10" data-bar></div>
+				<div class="timer__bar b11" data-bar></div>
+				<div class="timer__bar b12" data-bar></div>
+			</div>
+			<div class="board" data-board>
+				<div class="board__inner"></div>
+			</div>
+			<script type="module" src="/src/main.ts"></script>
+		</section>
+	</body>
+</html>

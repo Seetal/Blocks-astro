@@ -1,0 +1,11 @@
+.board {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+    padding: 10px;
+    > span {
+        background-color: var(--clr-black);
+        aspect-ratio: 1;
+    }
+}
