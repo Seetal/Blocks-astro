@@ -1,7 +1,6 @@
 @use 'settings';
 @use 'reset';
 @use 'generic';
-@use 'utilities';
 
 // Components
 
@@ -9,6 +8,8 @@
 @use 'components/nav';
 @use 'components/board';
 @use 'components/block';
-@use 'components/score';
-@use 'components/assists';
+@use 'components/scores';
 @use 'components/timer';
+@use 'components/home';
+
+@use 'utilities';

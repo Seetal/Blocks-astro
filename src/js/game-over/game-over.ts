@@ -1,5 +1,11 @@
+import { moveBlock } from "../board/move-block";
+import { swipeGestures } from "../board/swipe-gestures";
 
 export const gameOver = () => {
+    const boardElement = document.querySelector('[data-board]');
+    moveBlock.removeMoveEventListener();
+    swipeGestures.removeTouchStartListener();
+    swipeGestures.removeTouchEndListener();
     console.log('GAME OVER');
     const allBlocks: NodeListOf<HTMLDivElement> = document.querySelectorAll('.-js-block');
     const allBlocksArray: HTMLDivElement[] = Array.from(allBlocks);
@@ -13,8 +19,6 @@ export const gameOver = () => {
         return array;
     }
     const shuffledBlocks = shuffleArray(allBlocksArray);
-
-    console.log(shuffledBlocks);
     shuffledBlocks.forEach((block, i) => {
         setTimeout(function() {
             block.classList.add('faded');

@@ -7,23 +7,31 @@ import { config } from '../config';
 
 // TYPES / MODELS imports
 
-export const moveBlock = () => {
+interface MoveBlockModel {
+    boardElement: HTMLDivElement | null;
+    selectedBlock: HTMLDivElement | null;
+    updateBlockPosition: (target: HTMLDivElement) => void;
+    checkifMoveBlock: (target: HTMLDivElement) => void;
+    moveBlockFunction: (e: Event) => void;
+    setupMoveEventListener: () => void;
+    removeMoveEventListener: () => void;
+}
 
-    const boardElement = document.querySelector('[data-board]');
-    let selectedBlock: HTMLDivElement | null;
-
-    const updateBlockPosition = (target: HTMLDivElement) => {
-        if (selectedBlock) {
+export const moveBlock: MoveBlockModel = {
+    boardElement: document.querySelector('[data-board]'),
+    selectedBlock: null,
+    updateBlockPosition: function(target) {
+        if (this.selectedBlock) {
             const currentEmptyRow = emptyRowState.currentEmptyRow;
             const targetColour = target.dataset.colour;
-            target.dataset.colour = selectedBlock.dataset.colour;
-            selectedBlock.dataset.colour = targetColour;
-            selectedBlock.classList.remove('selected');
+            target.dataset.colour = this.selectedBlock.dataset.colour;
+            this.selectedBlock.dataset.colour = targetColour;
+            this.selectedBlock.classList.remove('selected');
 
             const updatedRows: number[] = [];
-            updatedRows.push(Number(selectedBlock.dataset.row));
+            updatedRows.push(Number(this.selectedBlock.dataset.row));
             updatedRows.push(Number(target.dataset.row));
-            selectedBlock = null;
+            this.selectedBlock = null;
             const completedRows = checkIfRowComplete(updatedRows);
             const rowsRemoved = completedRows.length > 0 && rowComplete(completedRows);
             if (completedRows.length > 0) {
@@ -35,28 +43,33 @@ export const moveBlock = () => {
                 score.updateScoreState(newScore);
             }
         }
-    }
-
-    const checkifMoveBlock = (target: HTMLDivElement) => {
-        if(!selectedBlock) {
+    },
+    checkifMoveBlock: function(target) {
+        if(!this.selectedBlock) {
             target.classList.add('selected');
-            selectedBlock = target;
+            this.selectedBlock = target;
             return;
         }
-        if(selectedBlock && target === selectedBlock) {
+        if(this.selectedBlock && target === this.selectedBlock) {
             target.classList.remove('selected');
-            selectedBlock = null;
+            this.selectedBlock = null;
             return;
         }
-        if(selectedBlock && selectedBlock !== target) {
-            if (target.dataset.size === selectedBlock.dataset.size && target.dataset.colour !== selectedBlock.dataset.colour) {
-                updateBlockPosition(target);
+        if(this.selectedBlock && this.selectedBlock !== target) {
+            if (target.dataset.size === this.selectedBlock.dataset.size && target.dataset.colour !== this.selectedBlock.dataset.colour) {
+                this.updateBlockPosition(target);
             }
         }
-    }
-    boardElement?.addEventListener('click', (e) => {
+    },
+    moveBlockFunction: function(e) {
         if ((e.target as HTMLDivElement).classList.contains('-js-block')) {
-            checkifMoveBlock(e.target as HTMLDivElement);
+            moveBlock.checkifMoveBlock(e.target as HTMLDivElement);
         }
-    })
+    },
+    setupMoveEventListener: function() {
+        this.boardElement?.addEventListener('click', this.moveBlockFunction);
+    },
+    removeMoveEventListener: function() {
+        this.boardElement?.removeEventListener('click', this.moveBlockFunction);
+    }
 } 

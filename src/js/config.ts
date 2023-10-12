@@ -18,7 +18,7 @@ export const config = {
     },
     colours: ['red', 'green', 'blue', 'orange'],
     blockSizes: { min: 1, max: 3},
-    rowAddTime: 4000,
+    rowAddTime: 1000,
     rowAddTimeReduction: 1000,
     assists: 5,
     scoreRewarded: 200

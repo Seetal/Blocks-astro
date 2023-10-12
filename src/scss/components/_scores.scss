@@ -1,0 +1,17 @@
+.scores {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Saira Condensed', sans-serif;
+    color: var(--clr-white);
+    padding: 0.625rem;
+    margin-bottom: 1rem;
+    &__label {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.3rem;
+    }
+    &__value {
+        font-weight: 200;
+        font-size: 3rem;
+    }
+}

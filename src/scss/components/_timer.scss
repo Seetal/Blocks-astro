@@ -9,22 +9,10 @@
 
     &__bar {
         height: 4px;
-        background-color: white;
+        background-color: var(--clr-grey);
         opacity: 0;
         &.show {
             opacity: 1;
         }
-        &.b1 { background-color: var(--clr-bar-1); }
-        &.b2 { background-color: var(--clr-bar-2); }
-        &.b3 { background-color: var(--clr-bar-3); }
-        &.b4 { background-color: var(--clr-bar-4); }
-        &.b5 { background-color: var(--clr-bar-5); }
-        &.b6 { background-color: var(--clr-bar-6); }
-        &.b7 { background-color: var(--clr-bar-7); }
-        &.b8 { background-color: var(--clr-bar-8); }
-        &.b9 { background-color: var(--clr-bar-9); }
-        &.b10 { background-color: var(--clr-bar-10); }
-        &.b11 { background-color: var(--clr-bar-11); }
-        &.b12 { background-color: var(--clr-bar-12); }
     }
 }

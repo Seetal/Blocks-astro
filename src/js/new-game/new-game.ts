@@ -22,9 +22,10 @@ export const newGame = () => {
         buildBoard(selectedSize);
         startingBlockRows(selectedSize, config.colours);
         assists.refreshAssists();
-        moveBlock();
+        moveBlock.setupMoveEventListener();
         createRowInterval.setTimer();
-        swipeGestures();
+        swipeGestures.setupTouchStartListener();
+        swipeGestures.setupTouchEndListener();
     }
 
     newGameButton?.addEventListener('click', () => {
