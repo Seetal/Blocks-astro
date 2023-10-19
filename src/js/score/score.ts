@@ -1,4 +1,5 @@
 import { createRowInterval } from '../board/create-row-interval';
+import { assists } from '../assists/assists';
 import { config } from '../config';
 
 
@@ -8,9 +9,9 @@ export const score = {
         this.currentScore += amount;
         this.refreshScore();
         const isDoubleLines = amount > config.scoreRewarded ? true : false;
-        if ((this.currentScore % 1000 === 0) || (isDoubleLines && (this.currentScore % 1000 === config.scoreRewarded ))) {
+        if ((this.currentScore % config.newRowspeedAndAddAssistThreshold === 0) || (isDoubleLines && (this.currentScore % config.newRowspeedAndAddAssistThreshold === config.scoreRewarded ))) {
             createRowInterval.updateTime();
-            console.log(`New Time  ${createRowInterval.currentTimeInterval}`);
+            assists.addAssist();
         }
     },
     refreshScore: function() {

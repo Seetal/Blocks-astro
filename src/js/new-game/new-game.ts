@@ -12,25 +12,12 @@ import { assists } from '../assists/assists';
 import { ConfigSizeModel } from "../../models/config-size-model";
 
 export const newGame = () => {
-    const newGameButton = document.querySelector('[data-start]');
-    const homePageView = document.querySelector('[data-home-view]');
-    const gameView = document.querySelector('[data-game-view]');
-
-    const buildGame = () => {
-        const selectedSize: ConfigSizeModel = config.sizes.medium;
-        emptyRowState.setCurrentEmptyRow(selectedSize.rows - selectedSize.startingRows);
-        buildBoard(selectedSize);
-        startingBlockRows(selectedSize, config.colours);
-        assists.refreshAssists();
-        moveBlock.setupMoveEventListener();
-        createRowInterval.setTimer();
-        swipeGestures.setupTouchStartListener();
-        swipeGestures.setupTouchEndListener();
-    }
-
-    newGameButton?.addEventListener('click', () => {
-        homePageView?.classList.add('hide');
-        gameView?.classList.remove('hide');
-        buildGame();
-    })
+    const selectedSize: ConfigSizeModel = config.sizes.medium;
+    emptyRowState.setCurrentEmptyRow(selectedSize.rows - selectedSize.startingRows);
+    startingBlockRows(selectedSize, config.colours);
+    assists.refreshAssists();
+    moveBlock.setupMoveEventListener();
+    createRowInterval.setTimer();
+    swipeGestures.setupTouchStartListener();
+    swipeGestures.setupTouchEndListener();
 }

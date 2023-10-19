@@ -11,6 +11,7 @@ interface MoveBlockModel {
     boardElement: HTMLDivElement | null;
     selectedBlock: HTMLDivElement | null;
     updateBlockPosition: (target: HTMLDivElement) => void;
+    animateNotAllowed: (target: HTMLDivElement) => void;
     checkifMoveBlock: (target: HTMLDivElement) => void;
     moveBlockFunction: (e: Event) => void;
     setupMoveEventListener: () => void;
@@ -44,6 +45,19 @@ export const moveBlock: MoveBlockModel = {
             }
         }
     },
+    animateNotAllowed: function(target) {
+        this.selectedBlock?.classList.add('not-allowed');
+        target.classList.add('not-allowed');
+        this.selectedBlock?.addEventListener('animationend', function removeSelectedClass() {
+            moveBlock.selectedBlock?.classList.remove('not-allowed', 'selected');
+            moveBlock.selectedBlock?.removeEventListener('animationend', removeSelectedClass);
+            moveBlock.selectedBlock = null;
+        });
+        target.addEventListener('animationend', function removeSelectedClass() {
+            target.classList.remove('not-allowed');
+            target.removeEventListener('animationend', removeSelectedClass);
+        });
+    },
     checkifMoveBlock: function(target) {
         if(!this.selectedBlock) {
             target.classList.add('selected');
@@ -56,9 +70,12 @@ export const moveBlock: MoveBlockModel = {
             return;
         }
         if(this.selectedBlock && this.selectedBlock !== target) {
+            if(target.dataset.size !== this.selectedBlock.dataset.size) {
+                this.animateNotAllowed(target);
+            };
             if (target.dataset.size === this.selectedBlock.dataset.size && target.dataset.colour !== this.selectedBlock.dataset.colour) {
                 this.updateBlockPosition(target);
-            }
+            };
         }
     },
     moveBlockFunction: function(e) {

@@ -2,13 +2,13 @@ export const config = {
     sizes: {
         small: {
             columns: 5,
-            rows: 7,
+            rows: 6,
             startingRows: 3
         },
         medium: {
             columns: 6,
-            rows: 8,
-            startingRows: 4
+            rows: 7,
+            startingRows: 3
         },
         large: {
             columns: 7,
@@ -18,8 +18,10 @@ export const config = {
     },
     colours: ['red', 'green', 'blue', 'orange'],
     blockSizes: { min: 1, max: 3},
-    rowAddTime: 1000,
-    rowAddTimeReduction: 1000,
+    rowAddTime: 7000,
+    rowAddTimeReduction: 200,
+    newRowspeedAndAddAssistThreshold: 1000,
     assists: 5,
-    scoreRewarded: 200
+    maxAssists: 10,
+    scoreRewarded: 100
 }

@@ -4,6 +4,8 @@
     grid-template-columns: repeat(6, 1fr);
     gap: 2px;
     padding: 10px;
+    user-select: none;
+    -webkit-user-select: none;
     > span {
         background-color: var(--clr-black);
         aspect-ratio: 1;

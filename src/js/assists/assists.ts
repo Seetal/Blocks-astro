@@ -11,5 +11,11 @@ export const assists = {
         if (assistsElement) {
             assistsElement.innerText = this.remainingAssists.toString();
         }
+    },
+    addAssist: function() {
+        if (assists.remainingAssists < 10) {
+            assists.remainingAssists++;
+            assists.refreshAssists();
+        }
     }
 }
