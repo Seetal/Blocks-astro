@@ -1,0 +1,10 @@
+---
+const { description, ariaLabel, handler, id } = Astro.props;
+---
+
+<article class="switch">
+    <label class="switch__label">{description}</label>
+    <button class="switch__case" id={id} aria-label={ariaLabel} aria-pressed="false" data-switch data-onclick={handler}>
+        <span class="switch__lever"></span>
+    </button>
+</article>

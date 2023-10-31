@@ -3,12 +3,21 @@
 .block {
     display: block;
     position: relative;
-    padding: 8px;
+    padding: 7px;
+    &--countdown {
+        opacity: 0;
+        background-color: var(--ui-clr-countdown);
+        animation-duration: 1s;
+        animation-iteration-count: 1;
+        animation-name: countdown;
+    }
     &.moved {
         padding: 0; 
     }
     &__inner {
-        display: block;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
         width: 100%;
         height: 100%;
         transition: background-color .2s ease;
@@ -64,4 +73,20 @@
     100% {
         transform: translateX(0);
     }
+}
+
+@keyframes countdown {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+
 }

@@ -1,7 +1,9 @@
 body {
-    background-color: var(--clr-dark-grey);
+    background-color: var(--ui-clr-background);
     position: fixed;
     overflow: hidden;
     width: 100%;
     height: 100%;
+    font-family: 'Saira Condensed', sans-serif;
+    color: var(--ui-clr-text);
 }

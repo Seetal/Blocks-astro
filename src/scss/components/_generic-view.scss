@@ -1,0 +1,23 @@
+.generic-view {
+    opacity: 0;
+    padding: 1rem;
+    position: relative;
+    &__title {
+        font-weight: 400;
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    &__close {
+        position: absolute;
+        right: 1rem;
+        border: 0;
+        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        padding: 0.3rem;
+        background-color: transparent;
+    }
+    &__close-icon {
+        fill: var(--ui-clr-text);
+    }
+}

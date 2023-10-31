@@ -1,0 +1,13 @@
+---
+import Switch from "../generic/switch.astro";
+
+---
+
+<section class="hide generic-view" data-settings-view>
+    <button class="generic-view__close" data-close-settings aria-label="close settings">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 30.4 30.4" viewBox="0 0 30.4 30.4"><path d="M30.4 2.1 28.3 0 15.2 13.1 2.1 0 0 2.1l13.1 13.1L0 28.3l2.1 2.1 13.1-13.1 13.1 13.1 2.1-2.1-13.1-13.1z" class="generic-view__close-icon"/></svg>
+    </button>
+    <h2 class="generic-view__title">Settings</h2>
+    <Switch ariaLabel="Dark mode" description="Dark mode" handler="updateDarkMode" id="darkMode" />
+    <Switch ariaLabel="Show block icons" description="Icons on blocks" handler="updateShowShapes" id="showShapes" />
+</section>

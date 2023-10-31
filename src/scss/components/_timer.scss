@@ -8,8 +8,8 @@
     gap: 2px;
 
     &__bar {
-        height: 4px;
-        background-color: var(--clr-grey);
+        height: 3px;
+        background-color: var(--ui-clr-time-bar);
         opacity: 0;
         &.show {
             opacity: 1;

@@ -8,9 +8,12 @@
 @use 'components/nav';
 @use 'components/board';
 @use 'components/block';
+@use 'components/block-icon';
 @use 'components/scores';
 @use 'components/timer';
 @use 'components/home';
 @use 'components/game';
+@use 'components/switch';
+@use 'components/generic-view';
 
 @use 'utilities';

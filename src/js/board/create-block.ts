@@ -5,7 +5,23 @@
 import { GridBlockPositionModel } from '../../models/gird-block-position-model';
 
 export const createBlock = (blockSize: number, colour: string, position: GridBlockPositionModel, row: number) => {
+
+    const iconColourKey = {
+        green: 'circle',
+        orange: 'square',
+        red: 'triangle',
+        blue: 'cross'
+    }
+    let icons = ``;
+
+    for (let i = 0; i < blockSize; i++) {
+        let iconString = `<div class="block-icon ${iconColourKey[colour]}"></div>`;
+        icons += iconString;
+    }
+
     return `<div class="block" style="grid-column: ${position.gridColumn}; grid-row: ${position.gridRow};">
-                <div class="block__inner -js-block" data-colour="${colour}" data-size="${blockSize}" data-row="${row}"></div>
+                <div class="block__inner -js-block" data-colour="${colour}" data-size="${blockSize}" data-row="${row}">
+                    ${icons}
+                </div>
             </div>`
 };

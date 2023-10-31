@@ -1,0 +1,61 @@
+.switch {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    align-items: center;
+    border-bottom: 1px solid var(--ui-clr-divider);
+    &:first-of-type {
+        border-top: 1px solid var(--ui-clr-divider);
+    }
+    &__label {
+        font-size: 1.4rem;
+    }
+    &__case {
+        display: inline-block;
+        border: 0;
+        background-color: var(--clr-red);
+        font-size: 1.25rem;
+        width: 5rem;
+        height: 2.375rem;
+        position: relative;
+        transition: background-color .4s ease;
+        font-family: 'Saira Condensed', sans-serif;
+        &::after {
+            content: 'off';
+            display: block;
+            color: var(--clr-white);
+            position: absolute;
+            right: 0.7rem;
+            top: 0.1rem;
+            transition: color .4s ease;
+        }
+        &::before {
+            content: 'on';
+            display: block;
+            color: var(--clr-white);
+            position: absolute;
+            left: 0.8rem;
+            top: 0.1rem;
+            transition: color .4s ease;
+        }
+        &[aria-pressed="true"] {
+            background-color: var(--clr-green);
+        }
+    }
+    &__lever {
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        left: 0.1875rem;
+        top: 0.1875rem;
+        display: block;
+        background-color: var(--ui-clr-background);
+        box-shadow: 0 0 2px var(--clr-black);
+        transition: left .4s ease, background-color .4s ease;
+        z-index: 10;
+        pointer-events: none;
+        [aria-pressed="true"] & {
+            left: 2.8125rem;
+        }
+    }
+}

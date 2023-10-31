@@ -4,7 +4,10 @@
     flex-direction: column;
     justify-content: center;
     background-image:
-        linear-gradient(0deg, transparent 91.5%, var(--clr-black) 91.6%, var(--clr-black) 100%),
-        linear-gradient(90deg, transparent 91.5%, var(--clr-black) 91.6%, var(--clr-black) 100%);
+        linear-gradient(0deg, transparent 91.5%, var(--ui-clr-grid-lines) 91.6%, var(--ui-clr-grid-lines) 100%),
+        linear-gradient(90deg, transparent 91.5%, var(--ui-clr-grid-lines) 91.6%, var(--ui-clr-grid-lines) 100%);
     background-size: 12px 12px;
+}
+.logo {
+    fill: var(--ui-clr-logo);
 }

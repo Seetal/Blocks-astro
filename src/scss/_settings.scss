@@ -1,9 +1,14 @@
 // variables
 html {
+
+    // GENERIC COLOURS
+    --clr-pure-black: hsla(0, 0%, 0%, 1);
     --clr-black: hsla(0, 0%, 11%, 1);
     --clr-dark-grey: hsla(0, 0%, 15%, 1);
-    --clr-grey: hsla(0, 0%, 45%, 1);
+    --clr-grey: hsla(0, 0%, 50%, 1);
     --clr-white: rgb(255, 255, 255);
+    --clr-off-white: hsl(0, 0%, 93%);
+    --clr-light-grey: hsl(0, 0%, 70%);
 
     --clr-green: hsla(88, 63%, 61%, 1);
     --clr-red: hsla(3, 90%, 63%, 1);
@@ -15,18 +20,27 @@ html {
     --clr-orange-faded: hsla(28, 100%, 66%, 0.6);
     --clr-blue-faded: hsla(203, 76%, 67%, 0.6);
 
-    // bar gradient colours
+    // UI SPECIFIC COLOURS
 
-    --clr-bar-1: #a0da5d;
-    --clr-bar-2: #CAC359;
-    --clr-bar-3: #DEB757;
-    --clr-bar-4: #EFAE56;
-    --clr-bar-5: #FAA854;
-    --clr-bar-6: #FFA553;
-    --clr-bar-7: #FE9D53;
-    --clr-bar-8: #FD9051;
-    --clr-bar-9: #FB8350;
-    --clr-bar-10: #F9744E;
-    --clr-bar-11: #F8674D;
-    --clr-bar-12: #F65A4B;
+    --ui-clr-background: var(--clr-off-white);
+    --ui-clr-grid-lines: var(--clr-white);
+    --ui-clr-logo: var(--clr-dark-grey);
+    --ui-clr-board-tile: var(--clr-white);
+    --ui-clr-text: var(--clr-dark-grey);
+    --ui-clr-time-bar: var(--clr-light-grey);
+    --ui-clr-countdown: var(--clr-light-grey);
+    --ui-clr-divider: var(--clr-light-grey);
+    --ui-clr-block-icon: var(--clr-white);
+}
+
+.dark-mode {
+    --ui-clr-background: var(--clr-dark-grey);
+    --ui-clr-grid-lines: var(--clr-black);
+    --ui-clr-logo: var(--clr-white);
+    --ui-clr-board-tile: var(--clr-black);
+    --ui-clr-text: var(--clr-white);
+    --ui-clr-time-bar: var(--clr-grey);
+    --ui-clr-countdown: var(--clr-pure-black);
+    --ui-clr-divider: var(--clr-black);
+    --ui-clr-block-icon: var(--clr-black);
 }
