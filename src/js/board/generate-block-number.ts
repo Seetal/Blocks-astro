@@ -1,3 +1,5 @@
+// Generates random numbers to aid in generating random block sizes
+
 export const generateBlockNumbers = (minBlockSize: number, maxBlockSize: number, rowTotal: number) => {
     const blockNumbers: number[] = [];
     let counter = 0;

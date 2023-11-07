@@ -13,13 +13,14 @@ interface SettingsModel {
     saveToLocalStorage: () => void;
     updateDarkModeUi: () => void;
     updateDarkMode: () => void;
-    updateShowShapes: (setting: boolean) => void;
+    updateShowShapesUi: () => void;
+    updateShowShapes: () => void;
 }
 
 export const settings: SettingsModel = {
     currentSettings: {
         darkMode: false,
-        showShapes: true
+        showShapes: false
     },
     bodyElement: document.querySelector('body'),
     settingsView: document.querySelector('[data-settings-view]'),
@@ -30,6 +31,7 @@ export const settings: SettingsModel = {
             const settings = JSON.parse(localSettings);
             this.currentSettings = settings;
             this.updateDarkModeUi();
+            this.updateShowShapesUi();
         }
     },
     saveToLocalStorage: function() {
@@ -48,7 +50,18 @@ export const settings: SettingsModel = {
             this.saveToLocalStorage();
         });
     },
-    updateShowShapes: function(setting) {
-        this.currentSettings.showShapes = setting;
+    updateShowShapesUi: function() {
+        const showShapesSwitch = document.querySelector('#showShapes');
+        showShapesSwitch?.setAttribute('aria-pressed', String(this.currentSettings.showShapes));
+        const boardElement = document.querySelector('[data-board]');
+        this.currentSettings.showShapes ? boardElement?.classList.add(`show-shapes`) : boardElement?.classList.remove(`show-shapes`);
+    },
+    updateShowShapes: function() {
+        const showShapesSwitch = document.querySelector('#showShapes');
+        showShapesSwitch?.addEventListener('click', (e) => {
+            this.currentSettings.showShapes = !this.currentSettings.showShapes;
+            this.updateShowShapesUi();
+            this.saveToLocalStorage();
+        });
     }
 }

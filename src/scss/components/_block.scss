@@ -1,9 +1,11 @@
 // Add perspective to block and rotate: x 90deg to inner
 
 .block {
-    display: block;
+    display: flex;
     position: relative;
     padding: 7px;
+    align-items: center;
+    perspective: 500px;
     &--countdown {
         opacity: 0;
         background-color: var(--ui-clr-countdown);
@@ -16,6 +18,7 @@
     }
     &__inner {
         display: flex;
+        position: relative;
         justify-content: space-around;
         align-items: center;
         width: 100%;
@@ -30,34 +33,49 @@
             animation-iteration-count: 2;
             animation-name: shake;
         }
+        &.shrink {
+            transform: scale(0.1, 0.1);
+            transition: transform .4s ease, opacity .4s ease;
+            opacity: 0;
+        }
+        &.rotate {
+            rotate: x 90deg;
+            transition: rotate .15s ease;
+        }
+        &.new-broken-block {
+            transition: rotate .15s ease;
+            &.rotated {
+                rotate: x -90deg;
+            }
+        }
     }
 }
 [data-colour="red"] {
     background-color: var(--clr-red);
     &.selected {
         background-color: var(--clr-red-faded);
-        border: 3px solid var(--clr-red);
+        border: 2px solid var(--clr-red);
     }
 }
 [data-colour="green"] {
     background-color: var(--clr-green);
     &.selected {
         background-color: var(--clr-green-faded);
-        border: 3px solid var(--clr-green);
+        border: 2px solid var(--clr-green);
     }
 }
 [data-colour="blue"] {
     background-color: var(--clr-blue);
     &.selected {
         background-color: var(--clr-blue-faded);
-        border: 3px solid var(--clr-blue);
+        border: 2px solid var(--clr-blue);
     }
 }
 [data-colour="orange"] {
     background-color: var(--clr-orange);
     &.selected {
         background-color: var(--clr-orange-faded);
-        border: 3px solid var(--clr-orange);
+        border: 2px solid var(--clr-orange);
     }
 }
 @keyframes shake {

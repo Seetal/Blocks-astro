@@ -1,4 +1,4 @@
-// TYPES / MODELS imports
+// Builds the initial board grid without the blocks
 
 import { ConfigSizeModel } from '../../models/config-size-model';
 

@@ -1,3 +1,5 @@
+// Checks if a row is complete post moving a block
+
 export const checkIfRowComplete = (rows: number[]) => {
     const completedRows: number[] = [];
     rows.forEach((row: number) => {

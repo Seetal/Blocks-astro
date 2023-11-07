@@ -20,4 +20,5 @@ export const newGame = () => {
     createRowInterval.setTimer();
     swipeGestures.setupTouchStartListener();
     swipeGestures.setupTouchEndListener();
+    //swipeGestures.setupTouchMoveListener();
 }

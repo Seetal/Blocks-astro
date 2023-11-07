@@ -1,3 +1,5 @@
+// Setup swipe gestures to aid assists
+
 import { breakBlock } from './break-block';
 import { createBlock } from './create-block';
 import { assists } from '../assists/assists';
@@ -18,12 +20,12 @@ export const swipeGestures = {
         let newBlockHtml = ``;
         newBlocksData?.forEach(block => {
             const { blockSize, colour, row, gridPosition } = block;
-            const newBlock = createBlock(blockSize, colour, gridPosition, row);
+            const newBlock = createBlock(blockSize, colour, gridPosition, row, true);
             newBlockHtml += newBlock;
         });
-        target.parentElement?.remove();
         this.boardElement?.insertAdjacentHTML('beforeend', newBlockHtml);
         assists.removeAssist();
+        swipeGestures.animateBlock(target);
     },
 
     calculateSwipe: function (target: HTMLElement) {
@@ -46,6 +48,25 @@ export const swipeGestures = {
             }
         };
     },
+    animateBlock: function(target: HTMLElement) {
+        target.classList.add('rotate');
+        const newBlocks = document.querySelectorAll('.new-broken-block');
+        const newBlockRevealTransitionEnd = () => {
+            newBlocks[newBlocks.length - 1].addEventListener('transitionend', function() {
+                newBlocks.forEach(block => {
+                    block.classList.remove('new-broken-block');
+                });
+            }, { once: true });
+        };
+
+        target.addEventListener('transitionend', function() {
+            newBlockRevealTransitionEnd();
+            target.parentElement?.remove();
+            newBlocks.forEach(block => {
+                block.classList.remove('rotated');
+            });
+        }, { once: true });
+    },
     touchStartFunction: function(e) {
         const touchEvent = e as TouchEvent;
         const target = e.target as HTMLElement;
@@ -63,12 +84,26 @@ export const swipeGestures = {
             swipeGestures.calculateSwipe(target);
         }
     },
+    touchMoveFunction: function(e) {
+        const touchEvent = e as TouchEvent;
+        const target = e.target as HTMLElement;
+        const yDist = swipeGestures.startY - touchEvent.touches[0].clientY;
+        if(target.classList.contains('-js-block')) {
+            console.log(yDist);
+            target.style.transform = `translateY(-${swipeGestures.startY - touchEvent.touches[0].clientY}px) scale(${100 + (yDist * 0.7)}%)`;
+            target.style.zIndex = '1';
+            target.style.boxShadow = `0 ${yDist / 2}px ${yDist / 4}px rgb(0 0 0 / 0.6)`;
+        };
+    },
     setupTouchStartListener: function() {
         this.boardElement?.addEventListener('touchstart', this.touchStartFunction);
     },
     setupTouchEndListener: function() {
         this.boardElement?.addEventListener('touchend', this.touchEndFunction);
     },
+    // setupTouchMoveListener: function() {
+    //     this.boardElement?.addEventListener('touchmove', this.touchMoveFunction);
+    // },
     removeTouchStartListener: function() {
         this.boardElement?.removeEventListener('touchstart', this.touchStartFunction);
     },

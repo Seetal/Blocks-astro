@@ -1,14 +1,23 @@
 .switch {
-    display: flex;
-    justify-content: space-between;
+    display: block;
     padding: 1rem 0;
-    align-items: center;
     border-bottom: 1px solid var(--ui-clr-divider);
     &:first-of-type {
         border-top: 1px solid var(--ui-clr-divider);
     }
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
     &__label {
         font-size: 1.4rem;
+    }
+    &__details {
+        font-weight: 200;
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+        width: 16rem;
     }
     &__case {
         display: inline-block;

@@ -6,22 +6,31 @@ html {
     --clr-black: hsla(0, 0%, 11%, 1);
     --clr-dark-grey: hsla(0, 0%, 15%, 1);
     --clr-grey: hsla(0, 0%, 50%, 1);
-    --clr-white: rgb(255, 255, 255);
+    --clr-white: hsl(0, 0%, 100%);
     --clr-off-white: hsl(0, 0%, 93%);
     --clr-light-grey: hsl(0, 0%, 70%);
 
-    --clr-green: hsla(88, 63%, 61%, 1);
-    --clr-red: hsla(3, 90%, 63%, 1);
-    --clr-orange: hsla(28, 100%, 66%, 1);
-    --clr-blue: hsla(203, 76%, 67%, 1);
+    --clr-green: hsl(88, 63%, 61%);
+    --clr-red: hsl(3, 90%, 63%);
+    --clr-orange: hsl(28, 100%, 66%);
+    --clr-blue: hsl(203, 76%, 67%);
 
-    --clr-green-faded: hsla(88, 63%, 61%, 0.6);
-    --clr-red-faded: hsla(3, 90%, 63%, 0.6);
-    --clr-orange-faded: hsla(28, 100%, 66%, 0.6);
-    --clr-blue-faded: hsla(203, 76%, 67%, 0.6);
+    --clr-green-faded: hsla(88, 63%, 61%, 0.4);
+    --clr-red-faded: hsla(3, 90%, 63%, 0.4);
+    --clr-orange-faded: hsla(28, 100%, 66%, 0.4);
+    --clr-blue-faded: hsla(203, 76%, 67%, 0.4);
+
+    --clr-green-darker: hsl(88, 63%, 41%);
+    --clr-red-darker: hsl(3, 90%, 43%);
+    --clr-orange-darker: hsl(28, 100%, 46%);
+    --clr-blue-darker: hsl(203, 76%, 47%);
 
     // UI SPECIFIC COLOURS
 
+    --ui-clr-block-shodow-bottom: hsla(0, 0%, 0%, 0.4);
+    --ui-clr-block-shodow-left: hsla(0, 0%, 11%, 0.15);
+    --ui-clr-block-highlight-top: hsla(0, 0%, 100%, 0.3);
+    --ui-clr-block-highlight-right: hsla(0, 0%, 100%, 0.15);
     --ui-clr-background: var(--clr-off-white);
     --ui-clr-grid-lines: var(--clr-white);
     --ui-clr-logo: var(--clr-dark-grey);

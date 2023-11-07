@@ -1,3 +1,5 @@
+// Updates the number of assists remaining
+
 import { config } from '../config';
 
 export const assists = {

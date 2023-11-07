@@ -1,4 +1,4 @@
-// MODELS
+// Generates two new blocks when an assist is used to break up a larger block
 
 import { NewBlockDataModel } from '../../models/new-block-data-model';
 

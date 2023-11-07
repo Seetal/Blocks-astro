@@ -1,8 +1,11 @@
+// Timer to add a new row to the board
+
 import { config } from '../config';
 import { emptyRowState } from "./empty-row-state";
 import { generateBlockNumbers } from './generate-block-number';
 import { buildBlockRow } from './build-block-row';
 import { gameOver } from '../game-over/game-over';
+import { moveBlock } from './move-block';
 
 // Models
 import { ConfigSizeModel } from "../../models/config-size-model";
@@ -20,7 +23,12 @@ export const createRowInterval = {
         this.clearIntervalTimer();
         this.setTimer();
     },
+    isWaitingToAddANewRow: false,
     intervalCounter: 0,
+    addNewRowAfterWaiting: function (){
+        this.addNewRow();
+        this.isWaitingToAddANewRow = false;
+    },
     showTimerBar: function() {
         const bar = document.querySelector(`.b${this.intervalCounter}`);
         bar?.classList.add('show');
@@ -41,7 +49,11 @@ export const createRowInterval = {
             this.showTimerBar();
             if(this.intervalCounter === 12) {
                 setTimeout(() => {
-                    this.addNewRow();
+                    if(moveBlock.isRemovingRowInProgress) {
+                        createRowInterval.isWaitingToAddANewRow = true;
+                    } else {
+                        this.addNewRow();
+                    }
                 }, this.currentTimeInterval / 12);
                 this.intervalCounter = 0;
             }
@@ -49,22 +61,21 @@ export const createRowInterval = {
         }, this.currentTimeInterval / 12);
     },
     addNewRow: function() {
-        const currentEmptyRow = emptyRowState.currentEmptyRow;
-        if (currentEmptyRow === 0) {
+        if (emptyRowState.currentEmptyRow === 0) {
             this.clearIntervalTimer();
             gameOver();
         } else {
             const boardElement: HTMLDivElement | null  = document.querySelector('[data-board]');
             const gridRowDetails = {
-                row: currentEmptyRow,
-                gridRowPosition: `${currentEmptyRow} / ${currentEmptyRow + 1}`
+                row: emptyRowState.currentEmptyRow,
+                gridRowPosition: `${emptyRowState.currentEmptyRow} / ${emptyRowState.currentEmptyRow + 1}`
             };
             const rowBlockNumbers = generateBlockNumbers(config.blockSizes.min, config.blockSizes.max, selectedSize.columns);
             const generateBlocksRow = buildBlockRow(rowBlockNumbers, colours, gridRowDetails, selectedSize);
             if (boardElement) {
                 boardElement.insertAdjacentHTML('beforeend', generateBlocksRow.html);
             }
-            emptyRowState.setCurrentEmptyRow(currentEmptyRow - 1);
+            emptyRowState.setCurrentEmptyRow(emptyRowState.currentEmptyRow - 1);
         }
     },
     clearIntervalTimer: function() {

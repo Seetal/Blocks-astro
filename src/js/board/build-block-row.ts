@@ -1,4 +1,5 @@
-// Builds a row of block to be added to board
+// Builds a row of blocks to be added to board
+
 import { createBlock } from './create-block';
 
 // TYPES / MODELS imports

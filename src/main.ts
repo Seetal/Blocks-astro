@@ -13,6 +13,7 @@ const selectedSize: ConfigSizeModel = config.sizes.medium;
 buildBoard(selectedSize);
 settings.getLocalSettings();
 settings.updateDarkMode();
+settings.updateShowShapes();
 
 
 // get view elements

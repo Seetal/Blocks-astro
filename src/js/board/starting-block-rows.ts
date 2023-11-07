@@ -1,3 +1,5 @@
+// Generate starting blocks and add to board
+
 import { config } from '../config';
 import { generateBlockNumbers } from './generate-block-number';
 import { buildBlockRow } from './build-block-row';

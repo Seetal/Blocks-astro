@@ -1,3 +1,5 @@
+// Initial countdown for game to start
+
 export const countdown = () => {
     return new Promise((resolve) => {
         const oneTemplate = `
