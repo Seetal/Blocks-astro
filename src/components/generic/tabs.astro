@@ -1,0 +1,21 @@
+---
+const { tabList } = Astro.props;
+const tabWidth = 100 / tabList.length;
+---
+
+<ul role="tablist" class="tabs" data-tabs style={`--tab-width: ${tabWidth}%;`}>
+    {
+        tabList.map((tab: { name: string, id: string }, i) => {
+            return ( 
+                <li class="tabs__item">
+                    <button 
+                        role="tab" 
+                        aria-selected={`${i === 0 ? 'true' : 'false'}`} 
+                        aria-controls={tab.id}
+                        class={`tabs__tab ${i === 0 ? 'selected' : ''}`}>{tab.name}
+                    </button>
+                </li> 
+            )
+        })
+    }
+</ul>

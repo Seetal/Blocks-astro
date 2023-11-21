@@ -3,10 +3,12 @@ html {
 
     // GENERIC COLOURS
     --clr-pure-black: hsla(0, 0%, 0%, 1);
+    --clr-pure-black-faded: hsla(0, 0%, 0%, 0.6);
     --clr-black: hsla(0, 0%, 11%, 1);
     --clr-dark-grey: hsla(0, 0%, 15%, 1);
     --clr-grey: hsla(0, 0%, 50%, 1);
     --clr-white: hsl(0, 0%, 100%);
+    --clr-white-faded: hsla(0, 0%, 100%, 0.1);
     --clr-off-white: hsl(0, 0%, 93%);
     --clr-light-grey: hsl(0, 0%, 70%);
 
@@ -32,6 +34,7 @@ html {
     --ui-clr-block-highlight-top: hsla(0, 0%, 100%, 0.3);
     --ui-clr-block-highlight-right: hsla(0, 0%, 100%, 0.15);
     --ui-clr-background: var(--clr-off-white);
+    --ui-clr-generic-background: var(--clr-white);
     --ui-clr-grid-lines: var(--clr-white);
     --ui-clr-logo: var(--clr-dark-grey);
     --ui-clr-board-tile: var(--clr-white);
@@ -40,16 +43,23 @@ html {
     --ui-clr-countdown: var(--clr-light-grey);
     --ui-clr-divider: var(--clr-light-grey);
     --ui-clr-block-icon: var(--clr-white);
+    --ui-clr-tab-background: var(--clr-off-white);
+    --ui-clr-popup: var(--clr-white);
+    --ui-clr-overlay: var(--clr-pure-black);
 }
 
 .dark-mode {
     --ui-clr-background: var(--clr-dark-grey);
+    --ui-clr-generic-background: var(--clr-black);
     --ui-clr-grid-lines: var(--clr-black);
     --ui-clr-logo: var(--clr-white);
     --ui-clr-board-tile: var(--clr-black);
     --ui-clr-text: var(--clr-white);
     --ui-clr-time-bar: var(--clr-grey);
     --ui-clr-countdown: var(--clr-pure-black);
-    --ui-clr-divider: var(--clr-black);
+    --ui-clr-divider: var(--clr-pure-black);
     --ui-clr-block-icon: var(--clr-black);
+    --ui-clr-tab-background: var(--clr-pure-black);
+    --ui-clr-popup: var(--clr-black);
+    --ui-clr-overlay: var(--clr-white-faded);
 }

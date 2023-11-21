@@ -23,7 +23,8 @@
         align-items: center;
         width: 100%;
         height: 100%;
-        transition: background-color .2s ease;
+        //transition: background-color .2s ease;
+        overflow: hidden;
         &.faded {
             opacity: 30%;
             transition: opacity .2s ease;
@@ -46,6 +47,25 @@
             transition: rotate .15s ease;
             &.rotated {
                 rotate: x -90deg;
+            }
+        }
+        &.addElement {
+            &::after {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 10px;
+                height: 10px;
+                border-radius: 5px;
+                background-color: var(--updated-colour);
+                left: var(--x);
+                top: var(--y);
+                transition: transform .3s ease;
+            }
+        }
+        &.animate {
+            &::after {
+                transform: scale(var(--transform-size));
             }
         }
     }

@@ -63,7 +63,7 @@ export const createRowInterval = {
     addNewRow: function() {
         if (emptyRowState.currentEmptyRow === 0) {
             this.clearIntervalTimer();
-            gameOver();
+            gameOver.initGameOver();
         } else {
             const boardElement: HTMLDivElement | null  = document.querySelector('[data-board]');
             const gridRowDetails = {

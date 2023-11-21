@@ -19,5 +19,8 @@ export const assists = {
             assists.remainingAssists++;
             assists.refreshAssists();
         }
+    },
+    resetAssists: function() {
+        this.remainingAssists = config.assists;
     }
 }

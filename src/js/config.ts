@@ -17,7 +17,7 @@ export const config = {
         }
     },
     colours: ['red', 'green', 'blue', 'orange'],
-    blockSizes: { min: 1, max: 3},
+    blockSizes: { min: 1, max: 3 },
     rowAddTime: 7000,
     rowAddTimeReduction: 200,
     newRowspeedAndAddAssistThreshold: 1000,

@@ -14,6 +14,10 @@ export const score = {
             assists.addAssist();
         }
     },
+    resetScore: function() {
+        this.currentScore = 0;
+        this.refreshScore();
+    },
     refreshScore: function() {
         const scoreElement: HTMLParagraphElement | null = document.querySelector('[data-score]');
         if (scoreElement) {

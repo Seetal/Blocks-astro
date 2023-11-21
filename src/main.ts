@@ -4,6 +4,10 @@ import { config } from './js/config';
 import { buildBoard } from './js/board/build-board';
 import { countdown } from './js/board/countdown';
 import { settings } from './js/settings/settings';
+import { closeView } from './js/generic/close-view';
+import { tabs } from './js/generic/tabs';
+import { leaderboard } from './js/leaderboard/leaderboard';
+import { views } from './js/views/views';
 
 // MODELS
 
@@ -14,35 +18,31 @@ buildBoard(selectedSize);
 settings.getLocalSettings();
 settings.updateDarkMode();
 settings.updateShowShapes();
-
-
-// get view elements
-const homePageView: HTMLElement | null = document.querySelector('[data-home-view]');
-const gameView: HTMLElement | null = document.querySelector('[data-game-view]');
-const settingsView: HTMLElement | null = document.querySelector('[data-settings-view]');
+closeView();
+leaderboard.getLocalScores();
 
 // home view buttons
 const newGameButton = document.querySelector('[data-start-btn]');
 const settingsButton = document.querySelector('[data-settings-btn]');
-
-const closeSettingsView = document.querySelector('[data-close-settings]');
+const leaderboardButton = document.querySelector('[data-leaderboard-btn]');
 
 newGameButton?.addEventListener('click', function() {
     (async function() {
-        const value = await changeView(homePageView, gameView);
+        const value = await changeView(views.homePageView, views.gameView);
         const count = await countdown();
         newGame();
     })();
-})
+});
 
 settingsButton?.addEventListener('click', function() {
     (async function() {
-        const value = await changeView(homePageView, settingsView);
+        const value = await changeView(views.homePageView, views.settingsView);
     })();
-})
+});
 
-closeSettingsView?.addEventListener('click', function() {
+leaderboardButton?.addEventListener('click', function() {
     (async function() {
-        const value = await changeView(settingsView, homePageView);
+        const value = await changeView(views.homePageView, views.leaderboardView);
+        tabs();
     })();
-})
+});

@@ -2,6 +2,8 @@
     opacity: 0;
     padding: 1rem;
     position: relative;
+    min-height: 100vh;
+    background-color: var(--ui-clr-generic-background);
     &__title {
         font-weight: 400;
         font-size: 2rem;
@@ -16,6 +18,9 @@
         height: 2rem;
         padding: 0.3rem;
         background-color: transparent;
+        svg {
+            pointer-events: none;
+        }
     }
     &__close-icon {
         fill: var(--ui-clr-text);
