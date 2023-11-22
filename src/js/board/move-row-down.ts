@@ -21,10 +21,8 @@ export const moveRowDown = (removedRows: number[]) => {
                 block.style.transform = '';
                 block.style.transition = '';
                 block.setAttribute('data-row', `${currentRow + counter}`);
-                //const lowestRow = Math.min(...removedRows);
 
                 if ((index === 0)) {
-                    console.log('resolved');
                     resolve(true);
                     isRemoveAnimationInProgress = false;
                 }

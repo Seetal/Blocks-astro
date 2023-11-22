@@ -8,7 +8,7 @@ export const config = {
         medium: {
             columns: 6,
             rows: 7,
-            startingRows: 3
+            startingRows: 4
         },
         large: {
             columns: 7,

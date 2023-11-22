@@ -8,6 +8,7 @@ import { closeView } from './js/generic/close-view';
 import { tabs } from './js/generic/tabs';
 import { leaderboard } from './js/leaderboard/leaderboard';
 import { views } from './js/views/views';
+import { gameOver } from './js/game-over/game-over';
 
 // MODELS
 
@@ -20,6 +21,7 @@ settings.updateDarkMode();
 settings.updateShowShapes();
 closeView();
 leaderboard.getLocalScores();
+gameOver.setupGameOverEventListeners();
 
 // home view buttons
 const newGameButton = document.querySelector('[data-start-btn]');

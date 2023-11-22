@@ -6,6 +6,8 @@ import { leaderboard } from '../leaderboard/leaderboard';
 import { assists } from '../assists/assists';
 import { views } from '../views/views';
 import { changeView } from '../generic/change-view';
+import { newGame } from '../new-game/new-game';
+import { countdown } from '../board/countdown';
 
 export const gameOver = {
     boardElement: document.querySelector('[data-board]'),
@@ -14,7 +16,6 @@ export const gameOver = {
         console.log('GAME OVER');
         this.removeListeners();
         this.transitionBlocksOff();
-        this.setupGameOverEventListeners();
         this.updateGameOverPanelScore();
         leaderboard.updateScores(score.currentScore);
     },
@@ -37,6 +38,7 @@ export const gameOver = {
         startNewGameButton?.addEventListener('click', function() {
             console.log('New Game');
             gameOver.clearGame();
+            gameOver.closeGameOverPanel(true);
         });
         quitButton?.addEventListener('click', function() {
             console.log('Quit Game');
@@ -70,11 +72,17 @@ export const gameOver = {
             this.gameOverPanel?.classList.add('fade-on');
         }, 10);
     },
-    closeGameOverPanel: function() {
+    closeGameOverPanel: function(startNewGame = false) {
         this.gameOverPanel?.classList.remove('fade-on');
         this.gameOverPanel?.classList.add('fade-off');
         this.gameOverPanel?.addEventListener('transitionend', () => {
             this.gameOverPanel?.classList.add('hide');
+            if(startNewGame) {
+                (async function() {
+                    const count = await countdown();
+                    newGame();
+                })();
+            };
         }, { once: true });
     },
     updateGameOverPanelScore: function() {
