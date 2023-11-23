@@ -3,8 +3,8 @@ import Tabs from '../generic/tabs.astro';
 import LeaderboardScores from '../generic/leaderboard-scores.astro';
 
 const tabList = [
-        { name: 'Your scores', id: 'yourScoresPanel'},
-        { name: 'Global', id: 'globalScoresPanel' }
+        { name: 'Your scores', panel: 'yourScoresPanel', id: 'tab-1'},
+        { name: 'Global', panel: 'globalScoresPanel', id: 'tab-2'}
     ];
 ---
 
@@ -14,11 +14,9 @@ const tabList = [
     </button>
     <h1 class="generic-view__title">Leaderboard</h1>
     <Tabs tabList={tabList} />
-    <section id="yourScoresPanel" class="tabs__panel active-panel">
-        <h2>Your Scores</h2>
+    <section id="yourScoresPanel" role="tabpanel" aria-labelledby="tab-1" class="tabs__panel active-panel">
         <LeaderboardScores />
     </section>
-    <section id="globalScoresPanel" class="tabs__panel">
-        <h2>Global Scores</h2>
+    <section id="globalScoresPanel" role="tabpanel" aria-labelledby="tab-2" class="tabs__panel">
     </section>
 </section>

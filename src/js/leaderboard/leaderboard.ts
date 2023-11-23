@@ -22,7 +22,15 @@ export const leaderboard =  {
         let scoresHtml = ``;
         this.sortScores(this.localScores);
         this.localScores.map((score: scoreType) => {
-            const currentScore = `<li><p>${score.score}</p><p>${score.date}</p></li>`;
+            const date = new Date(score.date);
+            const formattedDate = date.toDateString();
+            const currentScore = `
+                <li class="leaderboard__item">
+                    <div class="leaderboard__inner">
+                        <p class="leaderboard__date">${formattedDate}</p>
+                        <p class="leaderboard__score">${score.score}</p>
+                    </div>
+                </li>`;
             scoresHtml += currentScore;
         })
         yourScoresList?.insertAdjacentHTML('afterbegin', scoresHtml);

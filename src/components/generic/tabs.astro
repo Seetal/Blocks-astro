@@ -5,13 +5,14 @@ const tabWidth = 100 / tabList.length;
 
 <ul role="tablist" class="tabs" data-tabs style={`--tab-width: ${tabWidth}%;`}>
     {
-        tabList.map((tab: { name: string, id: string }, i) => {
+        tabList.map((tab: { name: string, id: string, panel: string }, i) => {
             return ( 
                 <li class="tabs__item">
                     <button 
                         role="tab" 
+                        id={tab.id}
                         aria-selected={`${i === 0 ? 'true' : 'false'}`} 
-                        aria-controls={tab.id}
+                        aria-controls={tab.panel}
                         class={`tabs__tab ${i === 0 ? 'selected' : ''}`}>{tab.name}
                     </button>
                 </li> 

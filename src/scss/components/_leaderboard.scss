@@ -1,0 +1,26 @@
+.leaderboard {
+    margin-top: 2rem;
+    border-top: 1px solid var(--ui-clr-divider);
+    counter-reset: my-counter;
+    &__item {
+        display: flex;
+        position: relative;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--ui-clr-divider);
+        counter-increment: my-counter;
+        &::before {
+            content: counter(my-counter);
+            display: block;
+            width: 3rem;
+            text-align: right;
+            padding-right: 0.3rem;
+            border-right: 1px solid var(--ui-clr-divider);
+        }
+    }
+    &__date {
+        margin-bottom: 0.2rem;
+    }
+    &__score {
+        font-size: 1.8rem;
+    }
+}
