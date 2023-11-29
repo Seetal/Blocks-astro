@@ -1,0 +1,54 @@
+.submit-score {
+    text-align: center;
+    font-size: 1rem;
+    display: none;
+    &.active {
+        display: block;
+    }
+    &__p {
+        font-size: 1.4rem;
+        line-height: 1.3em;
+        margin-bottom: 1rem;
+    }
+    &__input {
+        width: 100%;
+        font-size: 1.2rem;
+        border: 1px solid var(--ui-clr-input-border);
+        text-align: center;
+        font-family: 'Saira Condensed', sans-serif;
+        padding: 0.4rem;
+    }
+    &__error {
+        width: 100%;
+        height: 1.6rem;
+        position: relative;
+        text-align: center;
+    }
+    &__error-msg {
+        display: none;
+        position: relative;
+        top: -10px;
+        border-radius: 5px;
+        text-align: center;
+        padding: 0.2rem 0.5rem 0.3rem 0.5rem;
+        background-color: var(--clr-red);
+        color: var(--clr-white);
+        font-size: 1rem;
+        line-height: 1.2em;
+        &.active {
+            display: inline-block;
+        }
+    }
+    &__btn-wrapper {
+        position: relative;
+        margin: auto;
+        display: flex;
+        gap: 1rem;
+    }
+    &__submitting {
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+}

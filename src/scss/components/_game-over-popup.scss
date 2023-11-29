@@ -26,14 +26,20 @@
     &__p {
         font-size: 1.4rem;
         text-align: center;
-        margin-bottom: 2rem;
+        margin-bottom: 1.5rem;
         color: var(--ui-clr-text);
     }
     &__btn-wrapper {
-        width: 90%;
+        display: none;
         margin: auto;
+        &.active {
+            display: block;
+        }
         li {
             margin-bottom: 1rem;
+            &:last-of-type {
+                margin-bottom: 0;
+            }
         }
     }
 }

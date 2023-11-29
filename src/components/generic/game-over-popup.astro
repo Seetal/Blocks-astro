@@ -1,15 +1,26 @@
 ---
+import { config } from "../../js/config";
 ---
 
 <section class="game-over hide" data-game-over-panel>
     <div class="game-over__inner">
         <h2 class="game-over__title">Game Over</h2>
-        <p class="game-over__p">You scored <span class="game-over__score" data-game-over-score></span></p>
-        <div class="" data-enter-global-leaderboard>
-            
+        <p class="game-over__p">Score <span class="game-over__score" data-game-over-score></span></p>
+        <div class="submit-score" data-enter-global-leaderboard>
+            <p class="submit-score__p">You have made it into the top {config.globalLeaderboardScores} worldwide. Enter your name below to submit score:</p>
+            <label class="submit-score__label visually-hidden" for="name">Name</label>
+            <input class="submit-score__input" id="name" type="text" data-name-input>
+            <p class="submit-score__submitting" data-submitting>Submitting</p>
+            <div class="submit-score__error" data-submit-score-error aria-live="polite">
+                <span class="submit-score__error-msg" data-error-message></span>
+            </div>
+            <div class="submit-score__btn-wrapper">
+                <button class="btn btn--small green" data-submit-score-btn>Submit</button>
+                <button class="btn btn--small red" data-submit-score-cancel>Cancel</button>
+            </div>
         </div>
-        <ul class="game-over__btn-wrapper">
-            <li><button class="btn btn--small blue" data-new-game-btn>Start New Game</button></li>
+        <ul class="game-over__btn-wrapper" data-game-over-buttons>
+            <li><button class="btn btn--small green" data-new-game-btn>Start New Game</button></li>
             <li><button class="btn btn--small red" data-quit-btn>Quit</button></li>
         </ul>
     </div>

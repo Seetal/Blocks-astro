@@ -1,3 +1,4 @@
+import { newGame } from "../new-game/new-game";
 
 interface scoreType {
     score: number;
@@ -49,7 +50,7 @@ export const leaderboard =  {
         return isHigher;
     },
     updateScores: function(newScore: number) {
-        const newScoreObject: scoreType = { score: newScore, date: new Date() }
+        const newScoreObject: scoreType = { score: newScore, date: newGame.gameDate }
         if ((this.localScores.length > 9) && (this.isNewScoreInLeaderboard(newScore))) {
             this.localScores.pop();
             //@ts-ignore

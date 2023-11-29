@@ -9,11 +9,13 @@ import { tabs } from './js/generic/tabs';
 import { leaderboard } from './js/leaderboard/leaderboard';
 import { views } from './js/views/views';
 import { gameOver } from './js/game-over/game-over';
+import { submitScore } from './js/game-over/submit-score';
 
 // MODELS
 
 import { ConfigSizeModel } from './models/config-size-model';
 
+//serverlessTest();
 const selectedSize: ConfigSizeModel = config.sizes.medium;
 buildBoard(selectedSize);
 settings.getLocalSettings();
@@ -22,6 +24,8 @@ settings.updateShowShapes();
 closeView();
 leaderboard.getLocalScores();
 gameOver.setupGameOverEventListeners();
+submitScore.setupGameOverSubmitScoreListener();
+submitScore.setupSubmitScoreCancelListener();
 
 // home view buttons
 const newGameButton = document.querySelector('[data-start-btn]');
@@ -32,7 +36,7 @@ newGameButton?.addEventListener('click', function() {
     (async function() {
         const value = await changeView(views.homePageView, views.gameView);
         const count = await countdown();
-        newGame();
+        newGame.startNewGame();
     })();
 });
 

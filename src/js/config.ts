@@ -8,7 +8,7 @@ export const config = {
         medium: {
             columns: 6,
             rows: 7,
-            startingRows: 4
+            startingRows: 7
         },
         large: {
             columns: 7,
@@ -23,5 +23,6 @@ export const config = {
     newRowspeedAndAddAssistThreshold: 1000,
     assists: 5,
     maxAssists: 10,
-    scoreRewarded: 100
+    scoreRewarded: 100,
+    globalLeaderboardScores: 10
 }

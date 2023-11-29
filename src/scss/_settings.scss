@@ -45,7 +45,9 @@ html {
     --ui-clr-block-icon: var(--clr-white);
     --ui-clr-tab-background: var(--clr-off-white);
     --ui-clr-popup: var(--clr-white);
-    --ui-clr-overlay: var(--clr-pure-black);
+    --ui-clr-overlay: var(--clr-pure-black-faded);
+    --ui-clr-input-border: var(--clr-light-grey);
+    --ui-clr-input-background: var(--clr-off-white);
 }
 
 .dark-mode {
