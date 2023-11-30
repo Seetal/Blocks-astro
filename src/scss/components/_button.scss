@@ -10,6 +10,9 @@
     &--small {
         font-size: 1.5rem;
     }
+    &[aria-disabled="true"] {
+        opacity: 0.5;
+    }
     &.blue {
         background-color: var(--clr-blue);
     }

@@ -6,7 +6,7 @@ export const handler: Handler = withPlanetscale(async (event, context) => {
         planetscale: { connection },
     } = context;
 
-    const response = await connection.execute("SELECT id, score FROM leaderboard WHERE Score = ( SELECT MIN(Score) FROM leaderboard )");
+    const response = await connection.execute("SELECT id, score FROM topten WHERE Score = ( SELECT MIN(Score) FROM topten )");
     const data = JSON.stringify(response.rows);
 
     return {

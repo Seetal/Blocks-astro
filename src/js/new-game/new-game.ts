@@ -5,6 +5,7 @@ import { moveBlock } from '../board/move-block';
 import { createRowInterval } from '../board/create-row-interval';
 import { swipeGestures } from '../board/swipe-gestures';
 import { assists } from '../assists/assists';
+import { submitScore } from '../game-over/submit-score';
 
 // MODELS
 
@@ -26,5 +27,6 @@ export const newGame =  {
         createRowInterval.setTimer();
         swipeGestures.setupTouchStartListener();
         swipeGestures.setupTouchEndListener();
+        submitScore.resetSubmitScore();
     }
 }

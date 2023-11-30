@@ -24,5 +24,6 @@ export const config = {
     assists: 5,
     maxAssists: 10,
     scoreRewarded: 100,
-    globalLeaderboardScores: 10
+    globalLeaderboardScores: 10,
+    globalLeaderScoreThreshold: 100
 }

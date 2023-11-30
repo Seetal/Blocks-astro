@@ -6,22 +6,12 @@ export const handler: Handler = withPlanetscale(async (event, context) => {
         planetscale: { connection },
     } = context;
 
-    const { body } = event;
-
-    if (!body) {
-        return {
-            statusCode: 400,
-            body: "Missing body",
-        };
-    };
-
-    const id = JSON.parse(body);
-    const response = await connection.execute("DELETE FROM topten Where id=(?)", [id]);
-
-    const data = JSON.stringify(response);
+    const response = await connection.execute("SELECT * from topten");
+    const data = JSON.stringify(response.rows);
 
     return {
         statusCode: 201,
         body: data
     };
 });
+

@@ -6,11 +6,14 @@ import { config } from "../../js/config";
     <div class="game-over__inner">
         <h2 class="game-over__title">Game Over</h2>
         <p class="game-over__p">Score <span class="game-over__score" data-game-over-score></span></p>
+        <p class="submit-score__p submit-score__p--confirmation" data-submit-confirmation>Your score has been submitted.</p>
         <div class="submit-score" data-enter-global-leaderboard>
-            <p class="submit-score__p">You have made it into the top {config.globalLeaderboardScores} worldwide. Enter your name below to submit score:</p>
+            <p class="submit-score__p" data-submit-message>Would you like to submit your score into the global leaderboard? Enter your name below to submit:</p>
             <label class="submit-score__label visually-hidden" for="name">Name</label>
-            <input class="submit-score__input" id="name" type="text" data-name-input>
-            <p class="submit-score__submitting" data-submitting>Submitting</p>
+            <div class="submit-score__input-wrapper">
+                <input class="submit-score__input" id="name" type="text" data-name-input>
+                <div class="submit-score__submitting" data-submitting>Submitting Score...</div>
+            </div>
             <div class="submit-score__error" data-submit-score-error aria-live="polite">
                 <span class="submit-score__error-msg" data-error-message></span>
             </div>

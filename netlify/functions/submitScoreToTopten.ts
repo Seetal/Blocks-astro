@@ -15,11 +15,14 @@ export const handler: Handler = withPlanetscale(async (event, context) => {
         };
     };
 
-    const id = JSON.parse(body);
-    const response = await connection.execute("DELETE FROM topten Where id=(?)", [id]);
-
+    const { name, score, date } = JSON.parse(body);
+    
+    const response = await connection.execute("INSERT INTO topten (name, score, date) VALUES (?, ?, ?)", [
+        name,
+        score,
+        date,
+    ]);
     const data = JSON.stringify(response);
-
     return {
         statusCode: 201,
         body: data

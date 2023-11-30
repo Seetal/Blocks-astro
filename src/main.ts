@@ -23,9 +23,8 @@ settings.updateDarkMode();
 settings.updateShowShapes();
 closeView();
 leaderboard.getLocalScores();
+leaderboard.getGlobalTopTenScores();
 gameOver.setupGameOverEventListeners();
-submitScore.setupGameOverSubmitScoreListener();
-submitScore.setupSubmitScoreCancelListener();
 
 // home view buttons
 const newGameButton = document.querySelector('[data-start-btn]');

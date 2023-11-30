@@ -9,6 +9,13 @@
         font-size: 1.4rem;
         line-height: 1.3em;
         margin-bottom: 1rem;
+        text-align: center;
+        &--confirmation {
+            color: var(--clr-green);
+        }
+    }
+    &__input-wrapper {
+        position: relative;
     }
     &__input {
         width: 100%;
@@ -17,6 +24,7 @@
         text-align: center;
         font-family: 'Saira Condensed', sans-serif;
         padding: 0.4rem;
+        border-radius: 5px;
     }
     &__error {
         width: 100%;
@@ -46,9 +54,15 @@
         gap: 1rem;
     }
     &__submitting {
-        display: none;
-        &.active {
-            display: block;
-        }
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--clr-off-white);
+        border-radius: 5px;
+        text-align: center;
+        font-size: 1.4rem;
+        padding: 0.7rem 0.5rem;
     }
 }

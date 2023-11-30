@@ -9,7 +9,6 @@ import { changeView } from '../generic/change-view';
 import { newGame } from '../new-game/new-game';
 import { countdown } from '../board/countdown';
 import { config } from '../config';
-import { submitScore } from './submit-score';
 
 export const gameOver = {
     boardElement: document.querySelector('[data-board]'),
@@ -94,29 +93,28 @@ export const gameOver = {
         scoreElement.textContent = score.currentScore.toString();
     },
     // Check if score qualifies for global leaderboard
-    checkIfScoreQualifies: async function() {
-        const lowestScoreData = await fetch('/.netlify/functions/getLowestScore', {
-            method: 'GET'
-        });
-        const numberOfRowsData = await fetch('/.netlify/functions/getNumberOfRows', {
-            method: 'GET'
-        });
-        const lowestScore = await lowestScoreData.json();
-        const numberOfRows = await numberOfRowsData.json();
-        console.log(lowestScore, numberOfRows[0].number_of_rows);
-        if (score.currentScore === 0) {
+    checkIfScoreQualifies: function() {
+        if (score.currentScore <= config.globalLeaderScoreThreshold) {
             this.gameOverButtons?.classList.add('active');
             return;
         };
-        if (Number(numberOfRows[0].number_of_rows) < config.globalLeaderboardScores) {
-            this.enterLeadeboardPanel?.classList.add('active');
-            return;
-        };
-        if (score.currentScore > lowestScore[0].score) {
-            this.enterLeadeboardPanel?.classList.add('active');
-            submitScore.setRemoveScore(lowestScore[0].id);
-            return;
-        };
-        this.gameOverButtons?.classList.add('active');
+        this.enterLeadeboardPanel?.classList.add('active');
+        // const lowestScoreData = await fetch('/.netlify/functions/getLowestScore', {
+        //     method: 'GET'
+        // });
+        // const numberOfRowsData = await fetch('/.netlify/functions/getNumberOfRows', {
+        //     method: 'GET'
+        // });
+        // const lowestScore = await lowestScoreData.json();
+        // const numberOfRows = await numberOfRowsData.json();
+        // if (Number(numberOfRows[0].number_of_rows) < config.globalLeaderboardScores) {
+        //     this.enterLeadeboardPanel?.classList.add('active');
+        //     return;
+        // };
+        // if (score.currentScore > lowestScore[0].score) {
+        //     this.enterLeadeboardPanel?.classList.add('active');
+        //     submitScore.setRemoveScore(lowestScore[0].id);
+        //     return;
+        // };
     }
 };

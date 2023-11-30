@@ -8,6 +8,14 @@ interface scoreType {
 export const leaderboard =  {
     localScores: [],
     users: [],
+    globalTopTen: [],
+    getGlobalTopTenScores: async function() {
+        const response = await fetch('/.netlify/functions/getTopTen', {
+            method: 'GET'
+        });
+        const topTen = await response.json();
+        this.globalTopTen = topTen;
+    },
     getLocalScores: function() {
         const localScores = localStorage.getItem('blockScores');
         if (localScores) {
