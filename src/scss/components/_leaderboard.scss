@@ -4,18 +4,25 @@
     counter-reset: my-counter;
     &__item {
         display: flex;
+        align-items: stretch;
         position: relative;
-        padding: 1rem 0;
         border-bottom: 1px solid var(--ui-clr-divider);
         counter-increment: my-counter;
         &::before {
             content: counter(my-counter);
-            display: block;
-            width: 3rem;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            width: 2.5rem;
             text-align: right;
-            padding-right: 0.3rem;
+            padding: 0.5rem 0.5rem 0.5rem 0;
+            margin-right: 0.5rem;
             border-right: 1px solid var(--ui-clr-divider);
+            font-size: 1.8rem;
         }
+    }
+    &__inner {
+        padding: 0.5rem 0;
     }
     &__date {
         margin-bottom: 0.2rem;
