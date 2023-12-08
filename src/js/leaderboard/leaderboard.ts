@@ -4,6 +4,11 @@ interface scoreType {
     score: number;
     date: Date;
 }
+interface globalScoreType {
+    score: number;
+    date: Date;
+    name: string;
+}
 
 export const leaderboard =  {
     localScores: [],
@@ -15,6 +20,7 @@ export const leaderboard =  {
         });
         const topTen = await response.json();
         this.globalTopTen = topTen;
+        this.updateGlobalLeaderboardUi();
     },
     getLocalScores: function() {
         const localScores = localStorage.getItem('blockScores');
@@ -25,7 +31,7 @@ export const leaderboard =  {
         }
     },
     updateLeaderboardUi: function() {
-        const yourScoresList = document.querySelector('[data-leaderboard-your-scores]');
+        const yourScoresList = document.querySelector('[data-leaderboard="your-scores"]');
         // @ts-ignore
         yourScoresList.innerHTML = "";
         let scoresHtml = ``;
@@ -43,6 +49,26 @@ export const leaderboard =  {
             scoresHtml += currentScore;
         })
         yourScoresList?.insertAdjacentHTML('afterbegin', scoresHtml);
+    },
+    updateGlobalLeaderboardUi: function() {
+        const globalScoresList = document.querySelector('[data-leaderboard="global-scores"]');
+        // @ts-ignore
+        globalScoresList.innerHTML = "";
+        let scoresHtml = ``;
+        this.sortScores(this.globalTopTen);
+        this.globalTopTen.map((score: globalScoreType) => {
+            const date = new Date(score.date);
+            const formattedDate = date.toDateString();
+            const currentScore = `
+                <li class="leaderboard__item">
+                    <div class="leaderboard__inner">
+                        <p class="leaderboard__date">${formattedDate}</p>
+                        <p class="leaderboard__score">${score.score} - ${score.name}</p>
+                    </div>
+                </li>`;
+            scoresHtml += currentScore;
+        })
+        globalScoresList?.insertAdjacentHTML('afterbegin', scoresHtml);
     },
     sortScores: function(array: scoreType[]) {
         array.sort(function(a: scoreType, b: scoreType) {

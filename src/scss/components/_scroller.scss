@@ -1,0 +1,12 @@
+.scroller {
+    display: flex;
+    flex-direction: column;
+    &__header {
+        flex-grow: 0;
+    }
+    &__content {
+        flex-grow: 1;
+        overflow-y: scroll;
+        height: calc(100svh - 140px);
+    }
+}

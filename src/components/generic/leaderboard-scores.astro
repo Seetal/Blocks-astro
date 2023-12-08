@@ -1,6 +1,8 @@
 ---
+
+const { tabPanelID } = Astro.props;
 ---
 
-<ol class="leaderboard" data-leaderboard-your-scores>
+<ol class="leaderboard" data-leaderboard={tabPanelID}>
 
 </ol>
