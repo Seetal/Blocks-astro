@@ -19,7 +19,6 @@ export const createRowInterval = {
     updateTime: function() {
         const newTime = this.currentTimeInterval - config.rowAddTimeReduction;
         this.currentTimeInterval = newTime;
-        console.log(this.currentTimeInterval);
         this.clearIntervalTimer();
         this.setTimer();
     },
@@ -50,6 +49,8 @@ export const createRowInterval = {
             if(this.intervalCounter === 12) {
                 setTimeout(() => {
                     if(moveBlock.isRemovingRowInProgress) {
+                        createRowInterval.isWaitingToAddANewRow = true;
+                    } else if (moveBlock.isChangingColour && emptyRowState.currentEmptyRow === 0) {
                         createRowInterval.isWaitingToAddANewRow = true;
                     } else {
                         this.addNewRow();

@@ -16,6 +16,7 @@ export const gameOver = {
     enterLeadeboardPanel: document.querySelector('[data-enter-global-leaderboard]'),
     gameOverButtons: document.querySelector('[data-game-over-buttons]'),
     initGameOver: function() {
+        moveBlock.selectedBlock.element = null;
         this.removeListeners();
         this.transitionBlocksOff();
         this.updateGameOverPanelScore();
@@ -99,22 +100,5 @@ export const gameOver = {
             return;
         };
         this.enterLeadeboardPanel?.classList.add('active');
-        // const lowestScoreData = await fetch('/.netlify/functions/getLowestScore', {
-        //     method: 'GET'
-        // });
-        // const numberOfRowsData = await fetch('/.netlify/functions/getNumberOfRows', {
-        //     method: 'GET'
-        // });
-        // const lowestScore = await lowestScoreData.json();
-        // const numberOfRows = await numberOfRowsData.json();
-        // if (Number(numberOfRows[0].number_of_rows) < config.globalLeaderboardScores) {
-        //     this.enterLeadeboardPanel?.classList.add('active');
-        //     return;
-        // };
-        // if (score.currentScore > lowestScore[0].score) {
-        //     this.enterLeadeboardPanel?.classList.add('active');
-        //     submitScore.setRemoveScore(lowestScore[0].id);
-        //     return;
-        // };
     }
 };

@@ -30,6 +30,7 @@ gameOver.setupGameOverEventListeners();
 const newGameButton = document.querySelector('[data-start-btn]');
 const settingsButton = document.querySelector('[data-settings-btn]');
 const leaderboardButton = document.querySelector('[data-leaderboard-btn]');
+const tutorialButton = document.querySelector('[data-tutorial-btn]');
 
 newGameButton?.addEventListener('click', function() {
     (async function() {
@@ -49,5 +50,12 @@ leaderboardButton?.addEventListener('click', function() {
     (async function() {
         const value = await changeView(views.homePageView, views.leaderboardView);
         tabs();
+    })();
+});
+
+tutorialButton?.addEventListener('click', function() {
+    console.log('WOHOOOOOO');
+    (async function() {
+        const value = await changeView(views.homePageView, views.tutorialView);
     })();
 });

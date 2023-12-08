@@ -8,7 +8,7 @@ export const config = {
         medium: {
             columns: 6,
             rows: 7,
-            startingRows: 7
+            startingRows: 4
         },
         large: {
             columns: 7,
@@ -19,7 +19,7 @@ export const config = {
     colours: ['red', 'green', 'blue', 'orange'],
     blockSizes: { min: 1, max: 3 },
     rowAddTime: 7000,
-    rowAddTimeReduction: 200,
+    rowAddTimeReduction: 300,
     newRowspeedAndAddAssistThreshold: 1000,
     assists: 5,
     maxAssists: 10,

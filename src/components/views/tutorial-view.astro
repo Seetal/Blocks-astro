@@ -1,0 +1,14 @@
+---
+import { config } from "../../js/config";
+---
+
+<section class="hide generic-view" data-tutorial-view>
+    <button class="generic-view__close -js-close" data-target-view="tutorial" aria-label="close tutorial">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" style="enable-background:new 0 0 30.4 30.4" viewBox="0 0 30.4 30.4"><path d="M30.4 2.1 28.3 0 15.2 13.1 2.1 0 0 2.1l13.1 13.1L0 28.3l2.1 2.1 13.1-13.1 13.1 13.1 2.1-2.1-13.1-13.1z" class="generic-view__close-icon"/></svg>
+    </button>
+    <h1 class="generic-view__title">Tutorial</h1>
+    <p class="generic-view__p">Touch a block to select it, then touch another block of the same size to swap colours. The aim is to get one row all the same colour.</p>
+    <p class="generic-view__p">You can swipe up on a medium or large block to break it up into smaller blocks. Doing this will use an assist.</p>
+    <p class="generic-view__p">You start with 5 assists, every {config.newRowspeedAndAddAssistThreshold} points you will get another assist.</p>
+    <p class="generic-view__p">Also every {config.newRowspeedAndAddAssistThreshold} points, the time between a new row of blocks being added is reduced.</p>
+</section>

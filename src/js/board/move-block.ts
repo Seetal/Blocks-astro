@@ -19,6 +19,7 @@ type SelectedBlockModel = {
 interface MoveBlockModel {
     boardElement: HTMLDivElement | null;
     selectedBlock: SelectedBlockModel;
+    isChangingColour: boolean;
     isRemovingRowInProgress: boolean;
     updateBlockPosition: (e: MouseEvent) => void;
     animateNotAllowed: (target: HTMLDivElement) => void;
@@ -34,6 +35,7 @@ interface MoveBlockModel {
 export const moveBlock: MoveBlockModel = {
     boardElement: document.querySelector('[data-board]'),
     selectedBlock: { element: null, offsetX: 0, offsetY: 0 },
+    isChangingColour: false,
     isRemovingRowInProgress: false,
     animateNotAllowed: function(target) {
         this.selectedBlock.element?.classList.add('not-allowed');
@@ -55,7 +57,7 @@ export const moveBlock: MoveBlockModel = {
             const target = e.target as HTMLDivElement;
             let rowAnimationCounter = 0;
             if (selectedElement) {
-
+                this.isChangingColour = true;
                 const addProperties = (item: HTMLDivElement, xPosition: number, yPosition: number, colour: string | undefined ) => {
                     const selectedCenterPoint = item.offsetWidth / 2;
                     const selectedCircleTransformSize = xPosition > selectedCenterPoint ? 
@@ -104,6 +106,10 @@ export const moveBlock: MoveBlockModel = {
         const selectedElement = this.selectedBlock.element;
         const animatedBlocks = await this.animateSwapColours(e);
         const completedRows = this.completeRowCheck(selectedElement, e.target as HTMLDivElement);
+        this.isChangingColour = false;
+        if (completedRows.length === 0 && createRowInterval.isWaitingToAddANewRow) {
+            createRowInterval.addNewRowAfterWaiting();
+        }
         if (completedRows.length > 0) {
             this.isRemovingRowInProgress = true;
             const isRowsRemoved = await rowComplete(completedRows);
