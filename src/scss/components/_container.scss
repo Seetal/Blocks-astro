@@ -1,0 +1,21 @@
+@import '../mediaqueries';
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--ui-clr-generic-background);
+    &__inner {
+        height: 100%;
+        width: 100%;
+        max-width: 430px;
+        max-height: 930px;
+        border: 1px solid var(--ui-clr-divider);
+        background-color: var(--ui-clr-background);
+        @include bp-450 {
+            max-height: 43.75em;  
+        }
+    }
+}

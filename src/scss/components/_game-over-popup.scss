@@ -1,3 +1,5 @@
+@import '../mediaqueries';
+
 .game-over {
     display: flex;
     justify-content: space-around;
@@ -15,6 +17,9 @@
         box-shadow: 0 10px 10px rgb(0 0 0 / 0.2);
         background-color: var(--ui-clr-popup);
         width: 80%;
+        @include bp-450 {
+            width: 23.75rem;
+        }
     }
     &__title {
         font-size: 2rem;

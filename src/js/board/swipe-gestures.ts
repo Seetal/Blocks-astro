@@ -109,5 +109,5 @@ export const swipeGestures = {
     },
     removeTouchEndListener: function() {
         this.boardElement?.removeEventListener('touchend', this.touchEndFunction);
-    }
+    },
 }
