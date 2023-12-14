@@ -3,6 +3,7 @@
 import { breakBlock } from './break-block';
 import { createBlock } from './create-block';
 import { assists } from '../assists/assists';
+import { moveBlock } from './move-block';
 
 export const swipeGestures = {
     startX: 0,
@@ -26,6 +27,9 @@ export const swipeGestures = {
         this.boardElement?.insertAdjacentHTML('beforeend', newBlockHtml);
         assists.removeAssist();
         swipeGestures.animateBlock(target);
+        if(moveBlock.selectedBlock.element === target) {
+            moveBlock.selectedBlock.element = null;
+        }
     },
 
     calculateSwipe: function (target: HTMLElement) {
