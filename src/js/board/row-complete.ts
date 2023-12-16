@@ -9,6 +9,7 @@ export const rowComplete = (rows: number[]) => {
         const animateAndRemoveBlocks = (blocks: NodeList, row: number) => {
             blocks.forEach((block, i) => {
                 // @ts-ignore
+                block.classList.add('no-pointer-events');
                 block.classList.add('shrink');
                 block.addEventListener('transitionend', function() {
                     // @ts-ignore
