@@ -13,14 +13,10 @@ export const moveRowDown = (removedRows: number[]) => {
         // Check to see if there are any rows to move down, if its the top blocks row then nothing to move
         let isRemoveAnimationInProgress: boolean = false;
 
-        const updateRowPositions = (block: HTMLDivElement, counter: number, index: number) => {
+        const resolveTransitionEnd = (block: HTMLDivElement, index: number) => {
             block.addEventListener('transitionend', function() {
-                const currentRow: number = Number(block.dataset.row);
-                // @ts-ignore
-                block.parentNode.style.gridRow = `${currentRow + counter} / ${currentRow + counter + 1}`;
-                block.style.transform = '';
+                
                 block.style.transition = '';
-                block.setAttribute('data-row', `${currentRow + counter}`);
 
                 if ((index === 0)) {
                     resolve(true);
@@ -36,11 +32,18 @@ export const moveRowDown = (removedRows: number[]) => {
             } else {
                 isRemoveAnimationInProgress = true;
                 prevRow.forEach((block, i) => {
+                    const currentRow: number = Number(block.dataset.row);
                     // @ts-ignore
-                    block.style.transform = `translateY(${(blockHeight * removedRowsCounter) + (2 * removedRowsCounter)}px)`;
-                    block.style.transition = `transform .3s ease`;
-                    const currentRowCounter = removedRowsCounter; 
-                    updateRowPositions(block, currentRowCounter, i);
+                    block.parentNode.style.gridRow = `${currentRow + removedRowsCounter} / ${currentRow + removedRowsCounter + 1}`;
+                    block.setAttribute('data-row', `${currentRow + removedRowsCounter}`);
+                    // @ts-ignore
+                    block.style.transform = `translateY(-${(blockHeight * removedRowsCounter) + (2 * removedRowsCounter)}px)`;
+                    setTimeout(function() {
+                        block.style.transition = `transform .3s ease`;
+                        block.style.transform = '';
+                    }, 10);
+                    
+                    resolveTransitionEnd(block, i);
                 });
             };
             // If it is on the last row and no rows have been moved down then we need to resolve.
