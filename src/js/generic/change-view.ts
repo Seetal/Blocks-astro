@@ -9,6 +9,7 @@ export const changeView = (viewToHide: HTMLElement | null, viewToShow: HTMLEleme
         viewToHide?.classList.add('fade-off');
         viewToHide?.classList.remove('fade-on');
         viewToHide?.addEventListener('transitionend', function() {
+            // Wait for fade off transition to end before adding 'display: none' to view
             viewToHide?.classList.add('hide');
             viewToShow?.classList.remove('hide');
             setTimeout(function() {

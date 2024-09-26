@@ -11,11 +11,6 @@ export const submitScore = {
     cancelBtn: document.querySelector('[data-submit-score-cancel]'),
     submitConfirmation: document.querySelector('[data-submit-confirmation]'),
     nameInput: document.querySelector('[data-name-input]'),
-    //removeScore: { id: null, remove: false },
-    // setRemoveScore: function(id) {
-    //     this.removeScore.id = id;
-    //     this.removeScore.remove = true;
-    // },
     cancelSubmitScore: function() {
         const enterLeadeboardPanel = document.querySelector('[data-enter-global-leaderboard]');
         const gameOverButtons = document.querySelector('[data-game-over-buttons]');
@@ -42,11 +37,6 @@ export const submitScore = {
         };
         submitScore.checkIfScoreInGlobalTopTen(nameValue);
         submitScore.submitScoreToLeaderboard(nameValue, score.currentScore, newGame.gameDate.toDateString(), 'Leaderboard');
-        // if(submitScore.removeScore.remove) {
-        //     submitScore.removeScoreFromLeaderboard();
-        //     submitScore.removeScore.remove = false;
-        //     submitScore.removeScore.id = null;
-        // };
     },
     showValidationError: function(msg: string) {
         this.isValidationErrorShowing = true;
@@ -63,13 +53,13 @@ export const submitScore = {
             submitScore.submitScoreToLeaderboard(nameValue, score.currentScore, newGame.gameDate.toDateString(), 'Topten');
             return;
         };
-        const response = await fetch('/.netlify/functions/getLowestScore', {
+        const response = await fetch('/api/getLowestScore.json', {
             method: 'GET'
         });
         const lowestScore = await response.json();
-        if (score.currentScore > lowestScore[0].score) {
+        if (score.currentScore > lowestScore.data[0].score) {
             submitScore.submitScoreToLeaderboard(nameValue, score.currentScore, newGame.gameDate.toDateString(), 'Topten');
-            submitScore.removeScoreFromTopten(lowestScore[0].id);
+            submitScore.removeScoreFromTopten(lowestScore.data[0].id);
         };
     },
     resetSubmitScore: function() {
@@ -102,30 +92,26 @@ export const submitScore = {
             score: score,
             date: date
         };
-        const response = await fetch(`/.netlify/functions/submitScoreTo${table}`, {
-            method: "POST",
+        const response = await fetch(`/api/submitScoreTo${table}.json`, {
+            method: 'POST',
             headers: { 	
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify(data)
-        });
+        })
         const returnedResponse = await response.json();
         this.submitDone();
     },
-    removeScoreFromTopten: async function(id) {
-        // const data = { 
-        //     id: this.removeScore.id
-        // };
+    removeScoreFromTopten: async function(id: number) {
         
-        const response = await fetch('/.netlify/functions/removeScore', {
-            method: "POST",
+        const response = await fetch('/api/removeScore.json', {
+            method: "DELETE",
             headers: { 	
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify(id)
         });
-        console.log(response);
     }
 }
