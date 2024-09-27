@@ -8,12 +8,4 @@ export const GET = async ({ request }) => {
       status: 200,
       headers: { 'content-type': 'application/json'},
     })
-    // const response = await db.select().from(topten);
-  // } catch (error) {
-  //   return new Response(
-  //     JSON.stringify({
-  //       ok: false
-  //     })
-  //   )
-  // }
 }
