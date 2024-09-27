@@ -1,5 +1,3 @@
-export const prerender = false;
-
 import { APIRoute } from "astro";
 import { db } from "../../db";
 import { topten } from "../../db/schema";
