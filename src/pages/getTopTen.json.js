@@ -1,8 +1,7 @@
-import { APIRoute } from "astro";
 import { db } from "../db";
 import { topten } from "../db/schema";
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET = async ({ request }) => {
   try {
     const response = await db.select().from(topten);
     return new Response(
