@@ -16,7 +16,7 @@ export const leaderboard =  {
     globalTopTen: [],
     getGlobalTopTenScores: async function() {
         // API endpoint
-        const response = await fetch('/api/getTopTen.json', {
+        const response = await fetch('/getTopTen.json', {
             method: 'GET'
         });
         const topTen = await response.json();
