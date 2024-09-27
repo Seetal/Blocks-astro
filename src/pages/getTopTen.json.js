@@ -2,7 +2,6 @@ import { db } from "../db";
 import { topten } from "../db/schema";
 
 export const GET = async ({ request }) => {
-  try {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
     const data = await response.json();
     return new Response(JSON.stringify({message: data}), {
@@ -10,11 +9,11 @@ export const GET = async ({ request }) => {
       headers: { 'content-type': 'application/json'},
     })
     // const response = await db.select().from(topten);
-  } catch (error) {
-    return new Response(
-      JSON.stringify({
-        ok: false
-      })
-    )
-  }
+  // } catch (error) {
+  //   return new Response(
+  //     JSON.stringify({
+  //       ok: false
+  //     })
+  //   )
+  // }
 }
