@@ -1,6 +1,3 @@
-import { db } from "../db";
-import { topten } from "../db/schema";
-
 export const GET = async ({ request }) => {
     const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
     const data = await response.json();
