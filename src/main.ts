@@ -15,6 +15,7 @@ import { submitScore } from './js/game-over/submit-score';
 
 import { ConfigSizeModel } from './models/config-size-model';
 
+//serverlessTest();
 const selectedSize: ConfigSizeModel = config.sizes.medium;
 buildBoard(selectedSize);
 settings.getLocalSettings();
@@ -53,7 +54,6 @@ leaderboardButton?.addEventListener('click', function() {
 });
 
 tutorialButton?.addEventListener('click', function() {
-    console.log('WOHOOOOOO');
     (async function() {
         const value = await changeView(views.homePageView, views.tutorialView);
     })();

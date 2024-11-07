@@ -6,19 +6,15 @@
     "dev": "astro dev --host",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "wrangler pages dev ./dist",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^11.1.0",
-    "@libsql/client": "^0.13.0",
-    "astro": "^4.15.9",
-    "dotenv": "^16.4.5",
-    "drizzle-orm": "^0.33.0",
-    "wrangler": "^3.78.10"
+    "@netlify/planetscale": "^1.1.0",
+    "@planetscale/database": "^1.11.0",
+    "astro": "^3.2.0"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.24.2",
     "sass": "^1.68.0"
   }
 }

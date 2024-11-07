@@ -53,13 +53,13 @@ export const submitScore = {
             submitScore.submitScoreToLeaderboard(nameValue, score.currentScore, newGame.gameDate.toDateString(), 'Topten');
             return;
         };
-        const response = await fetch('/api/getLowestScore.json', {
+        const response = await fetch('/.netlify/functions/getLowestScore', {
             method: 'GET'
         });
         const lowestScore = await response.json();
-        if (score.currentScore > lowestScore.data[0].score) {
+        if (score.currentScore > lowestScore[0].score) {
             submitScore.submitScoreToLeaderboard(nameValue, score.currentScore, newGame.gameDate.toDateString(), 'Topten');
-            submitScore.removeScoreFromTopten(lowestScore.data[0].id);
+            submitScore.removeScoreFromTopten(lowestScore[0].id);
         };
     },
     resetSubmitScore: function() {
@@ -92,26 +92,30 @@ export const submitScore = {
             score: score,
             date: date
         };
-        const response = await fetch(`/api/submitScoreTo${table}.json`, {
-            method: 'POST',
+        const response = await fetch(`/.netlify/functions/submitScoreTo${table}`, {
+            method: "POST",
             headers: { 	
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify(data)
-        })
+        });
         const returnedResponse = await response.json();
         this.submitDone();
     },
-    removeScoreFromTopten: async function(id: number) {
+    removeScoreFromTopten: async function(id) {
+        // const data = { 
+        //     id: this.removeScore.id
+        // };
         
-        const response = await fetch('/api/removeScore.json', {
-            method: "DELETE",
+        const response = await fetch('/.netlify/functions/removeScore', {
+            method: "POST",
             headers: { 	
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             },
             body: JSON.stringify(id)
         });
+        console.log(response);
     }
 }

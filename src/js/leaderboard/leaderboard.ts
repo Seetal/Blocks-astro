@@ -15,12 +15,11 @@ export const leaderboard =  {
     users: [],
     globalTopTen: [],
     getGlobalTopTenScores: async function() {
-        // API endpoint
-        const response = await fetch('/getTopTen.json', {
+        const response = await fetch('/.netlify/functions/getTopTen', {
             method: 'GET'
         });
         const topTen = await response.json();
-        this.globalTopTen = topTen.data;
+        this.globalTopTen = topTen;
         this.updateGlobalLeaderboardUi();
     },
     getLocalScores: function() {

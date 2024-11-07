@@ -1,0 +1,5 @@
+name = "block-jham"
+pages_build_output_dir = "dist"
+
+[vars]
+TURSO_DB_URL = "libsql://blockjham-seetal.turso.io"
